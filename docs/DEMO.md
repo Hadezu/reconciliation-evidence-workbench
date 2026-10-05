@@ -11,6 +11,16 @@ Use the included synthetic sample only. [Release assets](https://github.com/Hade
 
 ![Three source records behind an ambiguous match](images/duplicate-evidence.png)
 
-Screenshots are genuine Chromium captures from the synthetic example during CI run `37372126653`. That early run failed later at the outcome-filter accessible-name check; the label was subsequently fixed. These images illustrate the unchanged report layout and source evidence, not a claim that the early run passed. Current execution status is in [Verification](VERIFICATION.md).
+[Watch/download the actual Chromium recording](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/download/v0.1.0/review-demo.webm). The short recording follows the automated review scenario; the numbered walkthrough above is a slower inspection guide.
+
+Screenshots and video were captured on 2026-10-05 by the **successful local Windows/Chromium acceptance test**, against implementation `89e3c8703d8986cc61b4bf35181a1eda2059c535`. They replace the preliminary captures from the earlier incomplete CI run. The recording contains real interactions with generated synthetic output, not a mockup. Full verification scope, including the pending hosted Linux check, is in [Verification](VERIFICATION.md).
+
+<details>
+<summary>Mobile report — 390px viewport</summary>
+
+![Mobile report](images/mobile.png)
+
+The comparison table scrolls horizontally inside its container; the page itself does not overflow.
+</details>
 
 The review workbook contains Summary, Reconciliation, Source rows and Rules. Monetary values are exact decimal text, deliberately not editable formulas. `manifest.json` allows `recon verify` to detect altered or missing evidence files; it is not a digital signature.
