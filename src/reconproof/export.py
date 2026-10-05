@@ -29,7 +29,9 @@ def portable(value):
     """Keep large exact money values safe for JavaScript/JSON consumers."""
     if isinstance(value, dict):
         return {
-            k: str(v) if k.endswith("_minor") and isinstance(v, int) else portable(v)
+            k: str(v)
+            if k.endswith("_minor") and k != "tolerance_minor" and isinstance(v, int)
+            else portable(v)
             for k, v in value.items()
         }
     if isinstance(value, list):
@@ -59,10 +61,10 @@ def workbook(report, path):
                 if value is None:
                     cell.value = ""
                 elif isinstance(value, (dict, list)):
-                    cell.value, cell.data_type = (
-                        json.dumps(value, ensure_ascii=True),
-                        "s",
-                    )
+                    encoded = json.dumps(value, ensure_ascii=True)
+                    if len(encoded) > 30_000:
+                        encoded = f"{len(value)} entries; full lineage in report.json and Source rows sheet (filter reference + currency)."
+                    cell.value, cell.data_type = encoded, "s"
                 elif isinstance(value, str):
                     # Explicit string cells preserve leading zeros and disable formula injection.
                     cell.value, cell.data_type = excel_safe(value), "s"

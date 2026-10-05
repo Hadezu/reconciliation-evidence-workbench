@@ -170,6 +170,18 @@ def test_native_xlsx_number_ignores_text_separator():
     assert ingest.money(123.45, ",") == 12345
 
 
+def test_large_lineage_has_explicit_workbook_pointer(tmp_path):
+    rows = ingest.normalize(
+        csv(["A,EUR,1.00,2026-09-01,posted"]), ".csv", "left", rules()
+    )
+    report = calculate(rows, rules(), ":memory:")
+    report["results"][0]["left_rows"] = list(range(2, 25_002))
+    workbook(report, tmp_path / "large-lineage.xlsx")
+    book = load_workbook(tmp_path / "large-lineage.xlsx")
+    assert book["Reconciliation"]["G2"].value.startswith("25000 entries; full lineage")
+    book.close()
+
+
 def test_process_death_never_publishes_partial_report(tmp_path):
     code = """import os,sys
 from pathlib import Path
