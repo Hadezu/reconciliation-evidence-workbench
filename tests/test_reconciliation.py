@@ -84,6 +84,7 @@ def test_hand_computed_oracle(tmp_path):
         assert db.execute("select count(*) from source_rows").fetchone()[0] == 25
     exported = json.loads((tmp_path / "run/report.json").read_text())
     assert isinstance(exported["bridges"][0]["left_eligible_minor"], str)
+    assert exported["rules"] == report["rules"]
 
 
 @pytest.mark.parametrize(

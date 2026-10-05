@@ -85,7 +85,7 @@ def workbook(report, path):
 
     summary = [
         ["Verdict", report["verdict"]],
-        ["Case", "Independent synthetic demonstration; not an accounting audit"],
+        ["Case", "Local reconciliation under explicit rules; not an accounting audit"],
         [
             "Money",
             "Exact decimal text; no formulas or FX. Known subtotals do not include unparseable amounts.",

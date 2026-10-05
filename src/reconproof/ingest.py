@@ -166,7 +166,9 @@ def normalize(data: bytes, suffix: str, side: str, rules: Rules):
             day = reporting_date(mapped["date"])
         except (ValueError, TypeError, OverflowError):
             errors.append("INVALID_OR_AMBIGUOUS_DATE")
-        status = str(mapped["status"] or "").strip()
+        status = str(mapped["status"] if mapped["status"] is not None else "").strip()
+        if not status:
+            errors.append("MISSING_STATUS")
         disposition, reason = "eligible", "IN_SCOPE"
         if errors:
             disposition, reason = "invalid", ";".join(errors)

@@ -157,6 +157,12 @@ def test_cancelled_bad_amount_is_not_silently_excluded():
     assert rows[0]["disposition"] == "invalid"
 
 
+def test_missing_status_is_invalid_not_an_exclusion():
+    rows = ingest.normalize(csv(["A,EUR,1.00,2026-09-01,"]), ".csv", "left", rules())
+    assert rows[0]["disposition"] == "invalid"
+    assert rows[0]["reason"] == "MISSING_STATUS"
+
+
 def test_duplicate_groups_preserve_very_large_exact_sums():
     rows = ingest.normalize(
         csv(["A,EUR,999999999999.99,2026-09-01,posted"] * 101), ".csv", "left", rules()
