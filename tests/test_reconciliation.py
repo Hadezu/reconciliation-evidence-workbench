@@ -58,7 +58,7 @@ def xlsx(rows):
 
 
 def test_hand_computed_oracle(tmp_path):
-    expected = json.loads((ROOT / "examples/expected.json").read_text())
+    expected = json.loads((ROOT / "examples/expected.json").read_text(encoding="utf-8"))
     report = pipeline.run(
         ROOT / "examples/ledger.csv",
         ROOT / "examples/target.xlsx",
@@ -82,7 +82,7 @@ def test_hand_computed_oracle(tmp_path):
     assert pipeline.verify(tmp_path / "run") == report["run_key"]
     with duckdb.connect(str(tmp_path / "run/evidence.duckdb"), read_only=True) as db:
         assert db.execute("select count(*) from source_rows").fetchone()[0] == 25
-    exported = json.loads((tmp_path / "run/report.json").read_text())
+    exported = json.loads((tmp_path / "run/report.json").read_text(encoding="utf-8"))
     assert isinstance(exported["bridges"][0]["left_eligible_minor"], str)
     assert exported["rules"] == report["rules"]
 
@@ -244,7 +244,7 @@ def test_html_injection_and_large_integer(tmp_path, rules):
     report["provenance"] = {}
     report["run_key"] = "test"
     html_report(report, tmp_path / "report.html")
-    assert key not in (tmp_path / "report.html").read_text()
+    assert key not in (tmp_path / "report.html").read_text(encoding="utf-8")
     assert (
         portable({"known_minor": 999999999999999999})["known_minor"]
         == "999999999999999999"
