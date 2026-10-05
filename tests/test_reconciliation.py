@@ -235,7 +235,7 @@ def test_malicious_formula_text_export(tmp_path, rules):
 
 
 def test_html_injection_and_large_integer(tmp_path, rules):
-    key = "</script><script>alert(1)</script>"
+    key = "</script><script>alert(1)</script> __VERDICT__"
     report = calculate(
         inputs([source(key=key)], [source(key=key)], rules),
         rules,
@@ -245,6 +245,7 @@ def test_html_injection_and_large_integer(tmp_path, rules):
     report["run_key"] = "test"
     html_report(report, tmp_path / "report.html")
     assert key not in (tmp_path / "report.html").read_text(encoding="utf-8")
+    assert "__VERDICT__" in (tmp_path / "report.html").read_text(encoding="utf-8")
     assert (
         portable({"known_minor": 999999999999999999})["known_minor"]
         == "999999999999999999"

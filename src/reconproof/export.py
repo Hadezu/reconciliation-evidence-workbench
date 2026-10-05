@@ -184,7 +184,7 @@ def html_report(report, path):
         .replace(">", "\\u003e")
         .replace("&", "\\u0026")
     )
-    output = template.replace("__REPORT_DATA__", payload).replace(
-        "__VERDICT__", html.escape(report["verdict"])
+    output = template.replace("__VERDICT__", html.escape(report["verdict"])).replace(
+        "__REPORT_DATA__", payload
     )
     path.write_text(output, encoding="utf-8")
