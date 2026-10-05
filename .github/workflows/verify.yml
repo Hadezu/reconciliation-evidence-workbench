@@ -1,0 +1,49 @@
+name: Verify reconciliation
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            python: '3.12'
+          - os: windows-latest
+            python: '3.14'
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7
+        with:
+          version: '0.12.23'
+      - run: uv sync --locked
+      - run: uv run ruff check src tests scripts browser_checks
+      - run: uv run ruff format --check src tests scripts browser_checks
+      - run: uv run pytest -q --junitxml=test-results/unit.xml
+      - run: uv build
+      - name: Install Chromium
+        if: runner.os == 'Linux'
+        run: uv run playwright install --with-deps chromium
+      - name: Browser acceptance and real demonstration recording
+        if: runner.os == 'Linux'
+        run: uv run pytest browser_checks -q --junitxml=test-results/browser.xml
+      - name: Retain test evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: evidence-${{ runner.os }}
+          path: test-results/
+          retention-days: 14

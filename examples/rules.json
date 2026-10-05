@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "period_start": "2026-09-01",
+  "period_end_exclusive": "2026-10-01",
+  "reporting_timezone": "UTC",
+  "currencies": ["EUR", "PLN", "USD"],
+  "tolerance_minor": 0,
+  "left": {
+    "columns": {"key": "invoice", "currency": "currency", "amount": "gross", "date": "issued_at", "status": "state"},
+    "included_statuses": ["posted"]
+  },
+  "right": {
+    "columns": {"key": "Reference", "currency": "Currency", "amount": "Amount", "date": "Date", "status": "Status"},
+    "sheet": "Export",
+    "included_statuses": ["booked"]
+  }
+}

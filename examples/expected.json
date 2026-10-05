@@ -1,0 +1,11 @@
+{
+  "verdict": "REVIEW_REQUIRED",
+  "source_rows": 25,
+  "left_accounting": {"eligible": 9, "invalid": 3, "excluded": 2},
+  "right_accounting": {"eligible": 9, "invalid": 0, "excluded": 2},
+  "exception_groups": 8,
+  "groups": {"00017|EUR": "MATCH", "INV-002|EUR": "AMOUNT_MISMATCH", "INV-003|EUR": "LEFT_ONLY", "INV-004|EUR": "AMBIGUOUS_DUPLICATE", "INV-005|EUR": "INVALID_GROUP", "BOUNDARY|EUR": "MATCH", "REFUND|EUR": "MATCH", "PLN-01|PLN": "AMOUNT_MISMATCH", "USD-01|USD": "LEFT_ONLY", "TARGET-ONLY|EUR": "RIGHT_ONLY", "BAD-DATE|EUR": "INVALID_GROUP"},
+  "eur_left_eligible_minor": 43410,
+  "eur_right_eligible_minor": 44100,
+  "eur_difference_minor": -690
+}
