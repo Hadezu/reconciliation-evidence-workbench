@@ -163,6 +163,15 @@ def test_missing_status_is_invalid_not_an_exclusion():
     assert rows[0]["reason"] == "MISSING_STATUS"
 
 
+def test_extra_cell_annotation_never_overwrites_original_column():
+    data = b"invoice,currency,gross,issued_at,state,__extra_cells__\nA,EUR,1.00,2026-09-01,posted,original,overflow\n"
+    rows = ingest.normalize(data, ".csv", "left", rules())
+    raw = json.loads(rows[0]["raw_json"])
+    assert raw["__extra_cells__"] == "original"
+    assert raw["__extra_cells___"] == ["overflow"]
+    assert rows[0]["disposition"] == "invalid"
+
+
 def test_duplicate_groups_preserve_very_large_exact_sums():
     rows = ingest.normalize(
         csv(["A,EUR,999999999999.99,2026-09-01,posted"] * 101), ".csv", "left", rules()

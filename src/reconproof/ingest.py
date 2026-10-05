@@ -144,7 +144,10 @@ def normalize(data: bytes, suffix: str, side: str, rules: Rules):
             for i, header in enumerate(headers)
         }
         if len(values) > len(headers):
-            raw["__extra_cells__"] = values[len(headers) :]
+            extra_key = "__extra_cells__"
+            while extra_key in raw:
+                extra_key += "_"
+            raw[extra_key] = values[len(headers) :]
         errors = []
         if len(values) != len(headers):
             errors.append("COLUMN_COUNT")
