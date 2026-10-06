@@ -1,5 +1,13 @@
 # Verification
 
+## Current verified state — 2026-10-06
+
+Published revision `cb0b2e6365dca07ee6f4fbb176884cf83697f562` passed [GitHub Actions run 37419275999](https://github.com/Hadezu/reconciliation-evidence-workbench/actions/runs/37419275999). Both **Linux/Python 3.12** and **Windows/Python 3.14** passed all **69 tests**, lint, formatting and package build. Both jobs installed the built wheel into an isolated environment and ran it outside the checkout: it generated the expected `REVIEW_REQUIRED` report for all 25 source rows, and manifest verification succeeded.
+
+The Linux job also passed the complete Chromium report scenario: source drilldown, search/filter, all source rows, keyboard dismissal and mobile layout. Both jobs uploaded evidence. **Hosted Linux verification is complete**, not pending. This supersedes the queue status recorded below; it does not imply native Excel rendering or production verification.
+
+## Historical publication checkpoint — 2026-10-05
+
 Checked 2026-10-05. Implementation revision: `89e3c8703d8986cc61b4bf35181a1eda2059c535`. Later documentation/media-only commits do not change it.
 
 - **Local Windows: 69 tests passed**, including 35 generated Hypothesis cases inside one property test. Ruff lint/format and wheel/source build passed.
@@ -14,9 +22,9 @@ Local environment: Windows, Python 3.14.4, uv 0.12.23. Exact dependency resoluti
 
 The suite covers a predetermined synthetic oracle, exact arithmetic, duplicates on either side, invalid duplicates, currency isolation, timezone boundaries, missing identities, unsupported currencies, explicit tolerances, blank/malformed inputs, XLSX formulas/numeric identifiers/date cells, archive expansion, XML entity rejection, literal-string workbook output, large-integer HTML data, long workbook cell preservation, repeatability, unchanged inputs, output refusal, export failure and manifest tampering. Hypothesis additionally checks matching under input permutation and exact sums across generated cases.
 
-Earlier read-only browser checks caught malformed filter markup, which was corrected before publication. The complete local automated Chromium scenario subsequently passed. CI also contains that scenario; its queued Linux execution is still a separate pending check.
+Earlier read-only browser checks caught malformed filter markup, which was corrected before publication. The complete local automated Chromium scenario subsequently passed. At this historical checkpoint, the hosted Linux execution was still pending; it has since passed as recorded above.
 
-The published v0.1.0 release has a verified Windows reference environment, including Chromium. Pending hosted Linux verification is disclosed rather than represented as a passing cross-platform matrix. The release tag preserves the tested implementation; subsequent documentation/media commits on main record the final local evidence. No application code changed during this final verification pass.
+At publication, v0.1.0 had a verified Windows reference environment, including Chromium, while hosted Linux verification was still pending. The release tag preserves that implementation; subsequent documentation/media commits recorded local evidence and later CI changes strengthened installed-package checks. See the current verified state above for the completed cross-platform results.
 
 To repeat browser acceptance locally after `uv sync --locked`:
 
