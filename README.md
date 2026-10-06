@@ -10,7 +10,18 @@ Independent engineering work by **Ivan Matiushkin with Codex**. Included data is
 
 [Case study and buyer requirements](docs/CASE-STUDY.md) · [Contract and architecture](docs/CONTRACT.md) · [Verification](docs/VERIFICATION.md) · [Portfolio/email copy](docs/COMMERCIAL-USAGE.md)
 
+## Watch the demonstration
+
+Recorded interaction with synthetic reconciliation output, including source drilldown and filters.
+
+https://github.com/user-attachments/assets/ff619cf1-c40f-450c-88ee-2d505e207bda
+
+<details>
+<summary>View a still frame</summary>
+
 ![Reconciliation report from the synthetic example](docs/images/overview.png)
+
+</details>
 
 [60-second demonstration](docs/DEMO.md) · [Downloadable package and synthetic evidence](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/tag/v0.1.0)
 
