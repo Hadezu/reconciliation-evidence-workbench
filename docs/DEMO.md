@@ -1,5 +1,7 @@
 # A 60-second inspection
 
+[Watch the recording directly in the README](../README.md#watch-the-demonstration).
+
 Use the included synthetic sample only. [Release assets](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/tag/v0.1.0) include `synthetic-evidence.zip`; extract it before opening `report.html`. No installation is required to view HTML/XLSX. To reproduce the calculation, follow the README commands.
 
 1. Start with the four counters: 25 source records, 8 exception groups, 3 invalid records, 4 rule exclusions.
@@ -11,9 +13,9 @@ Use the included synthetic sample only. [Release assets](https://github.com/Hade
 
 ![Three source records behind an ambiguous match](images/duplicate-evidence.png)
 
-[Watch/download the actual Chromium recording](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/download/v0.1.0/review-demo.webm). The short recording follows the automated review scenario; the numbered walkthrough above is a slower inspection guide.
+[Download the original Chromium recording](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/download/v0.1.0/review-demo.webm). The short recording follows the automated review scenario; the numbered walkthrough above is a slower inspection guide.
 
-Screenshots and video were captured on 2026-10-05 by the **successful local Windows/Chromium acceptance test**, against implementation `89e3c8703d8986cc61b4bf35181a1eda2059c535`. They replace the preliminary captures from the earlier incomplete CI run. The recording contains real interactions with generated synthetic output, not a mockup. Full verification scope, including the pending hosted Linux check, is in [Verification](VERIFICATION.md).
+Screenshots and video were captured on 2026-10-05 by the **successful local Windows/Chromium acceptance test**, against implementation `89e3c8703d8986cc61b4bf35181a1eda2059c535`. They replace the preliminary captures from the earlier incomplete CI run. The recording contains real interactions with generated synthetic output, not a mockup. Full verification scope, including completed Linux and Windows checks, is in [Verification](VERIFICATION.md).
 
 <details>
 <summary>Mobile report — 390px viewport</summary>
