@@ -1,5 +1,13 @@
 # Reconciliation Evidence Workbench
 
+<!-- portfolio-navigation:start -->
+[← Project index](https://github.com/Hadezu#selected-implementations) · [Data migration and reconciliation](https://work.matiushkin.com/en/services/data-migration) · [Describe a similar task](https://work.matiushkin.com/en/contact?example=services%2Fdata-migration)
+
+**Review format:** Offline CSV/XLSX reports and a reproducible local tool. The related portfolio example does not run this repository.
+
+[Related interactive example](https://work.matiushkin.com/en/proof/revenue-bi) — a separate portfolio demonstration of the same problem.
+<!-- portfolio-navigation:end -->
+
 [![Verify](https://github.com/Hadezu/reconciliation-evidence-workbench/actions/workflows/verify.yml/badge.svg)](https://github.com/Hadezu/reconciliation-evidence-workbench/actions/workflows/verify.yml)
 
 **Two exports disagree. Which rows explain the difference — and did the comparison lose anything?**
