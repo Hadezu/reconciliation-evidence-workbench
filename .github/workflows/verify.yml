@@ -34,6 +34,27 @@ jobs:
       - run: uv run ruff format --check src tests scripts browser_checks
       - run: uv run pytest -q --junitxml=test-results/unit.xml
       - run: uv build
+      - name: Install and exercise the built wheel outside the checkout
+        shell: bash
+        run: |
+          uv export --frozen --no-dev --no-emit-project --output-file test-results/wheel-constraints.txt
+          uv venv test-results/wheel-env
+          if [ "$RUNNER_OS" = Windows ]; then
+            PY=test-results/wheel-env/Scripts/python.exe
+          else
+            PY=test-results/wheel-env/bin/python
+          fi
+          uv pip install --python "$PY" -c test-results/wheel-constraints.txt dist/*.whl
+          ROOT="$PWD"
+          mkdir -p "$RUNNER_TEMP/recon-wheel-run"
+          cd "$RUNNER_TEMP/recon-wheel-run"
+          set +e
+          "$ROOT/$PY" -m reconproof.cli run --left "$ROOT/examples/ledger.csv" --right "$ROOT/examples/target.xlsx" --rules "$ROOT/examples/rules.json" --out "$ROOT/test-results/installed-wheel"
+          result=$?
+          set -e
+          test "$result" -eq 2
+          "$ROOT/$PY" -m reconproof.cli verify "$ROOT/test-results/installed-wheel"
+          test -s "$ROOT/test-results/installed-wheel/report.html"
       - name: Install Chromium
         if: runner.os == 'Linux'
         run: uv run playwright install --with-deps chromium
@@ -45,5 +66,10 @@ jobs:
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: evidence-${{ runner.os }}
-          path: test-results/
+          path: |
+            test-results/unit.xml
+            test-results/browser.xml
+            test-results/installed-wheel/
+            test-results/browser/
+            dist/
           retention-days: 14
