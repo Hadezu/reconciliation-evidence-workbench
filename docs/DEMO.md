@@ -1,7 +1,5 @@
 # A 60-second inspection
 
-[Watch the recording directly in the README](../README.md#watch-the-demonstration).
-
 Use the included synthetic sample only. [Release assets](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/tag/v0.1.0) include `synthetic-evidence.zip`; extract it before opening `report.html`. No installation is required to view HTML/XLSX. To reproduce the calculation, follow the README commands.
 
 1. Start with the four counters: 25 source records, 8 exception groups, 3 invalid records, 4 rule exclusions.
