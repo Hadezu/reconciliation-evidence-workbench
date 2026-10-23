@@ -1,20 +1,19 @@
-# Reconciliation Evidence Workbench
+# Reconciliation Workbench — explain differences between exports
+
+Turn conflicting CSV and XLSX exports into a reviewable evidence package: exact-money comparison, ambiguous-match isolation, source-row provenance, an HTML report and an Excel review workbook.
 
 <!-- portfolio-navigation:start -->
 [← Project index](https://github.com/Hadezu#selected-implementations) · [Data migration and reconciliation](https://work.matiushkin.com/en/services/data-migration) · [Describe a similar task](https://work.matiushkin.com/en/contact?example=services%2Fdata-migration)
 
-**Review format:** Offline CSV/XLSX reports and a reproducible local tool. The related portfolio example does not run this repository.
 
 [Related interactive example](https://work.matiushkin.com/en/proof/revenue-bi) — a separate portfolio demonstration of the same problem.
 <!-- portfolio-navigation:end -->
 
 [![Verify](https://github.com/Hadezu/reconciliation-evidence-workbench/actions/workflows/verify.yml/badge.svg)](https://github.com/Hadezu/reconciliation-evidence-workbench/actions/workflows/verify.yml)
 
-**Two exports disagree. Which rows explain the difference — and did the comparison lose anything?**
+**Trace each reported difference back to the source rows.**
 
-An offline Python/DuckDB tool that compares separately mapped CSV/XLSX exports and hands over an interactive HTML report, an XLSX review workbook, original input snapshots, inspectable SQL/database and checksums.
-
-Independent engineering work by **Ivan Matiushkin with Codex**. Included data is synthetic. This supports the existing [report reconciliation service](https://work.matiushkin.com/en/proof/revenue-bi); it is not client history or a financial audit.
+**Stack and handover:** Python, DuckDB, HTML and XLSX, with original input snapshots, inspectable SQL/database and checksums.
 
 [Case study and buyer requirements](docs/CASE-STUDY.md) · [Contract and architecture](docs/CONTRACT.md) · [Verification](docs/VERIFICATION.md) · [Portfolio/email copy](docs/COMMERCIAL-USAGE.md)
 
@@ -91,3 +90,10 @@ Original test recording retained as supporting evidence. For the scenario, resul
 [Download the original recording](https://github.com/Hadezu/reconciliation-evidence-workbench/releases/download/v0.1.0/review-demo.webm)
 
 </details>
+
+
+## Discuss a similar project
+
+I develop complete applications, integrations and focused improvements to existing software. Send the workflow you want to improve and the outcome you need; we can define the scope, delivery stages and acceptance checks together.
+
+**[Discuss your project](https://work.matiushkin.com/en/contact)** · [More implementations](https://github.com/Hadezu) · [Project context and verification scope](PRESENTATION-SCOPE.md)
