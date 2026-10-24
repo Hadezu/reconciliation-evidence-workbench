@@ -2,6 +2,8 @@
 
 Turn conflicting CSV and XLSX exports into a reviewable evidence package: exact-money comparison, ambiguous-match isolation, source-row provenance, an HTML report and an Excel review workbook.
 
+**[Open the example report in your browser](https://hadezu.github.io/reconciliation-evidence-workbench/)** — no installation or download. Explore the existing synthetic release report: search `INV-002` for an amount difference or inspect `INV-004` for an ambiguous match.
+
 <!-- portfolio-navigation:start -->
 [← Project index](https://github.com/Hadezu#selected-implementations) · [Data migration and reconciliation](https://work.matiushkin.com/en/services/data-migration) · [Describe a similar task](https://work.matiushkin.com/en/contact?example=services%2Fdata-migration)
 
@@ -94,6 +96,6 @@ Original test recording retained as supporting evidence. For the scenario, resul
 
 ## Discuss a similar project
 
-I develop complete applications, integrations and focused improvements to existing software. Send the workflow you want to improve and the outcome you need; we can define the scope, delivery stages and acceptance checks together.
+Need to explain why two exports disagree? Describe the two sources, the fields they share and the result you need. We can agree the matching rules, exception handling and review report. Start with column names or anonymized samples.
 
 **[Discuss your project](https://work.matiushkin.com/en/contact)** · [More implementations](https://github.com/Hadezu) · [Project context and verification scope](PRESENTATION-SCOPE.md)
